@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+WordXmlManipulate	replace_angiosperm_family.rb	/^class WordXmlManipulate$/;"	c
+WordXmlManipulate	replace_conifer_family.rb	/^class WordXmlManipulate$/;"	c
+WordXmlManipulate	replace_docx_content.rb	/^class WordXmlManipulate$/;"	c
+WordXmlManipulate	replace_fern_family.rb	/^class WordXmlManipulate$/;"	c
+WordXmlManipulate	replace_moss_family.rb	/^class WordXmlManipulate$/;"	c
+array_province	wrapper_dis_line.rb	/^def array_province(dis_string)$/;"	f
+dis_arbord	wrapper_dis_line.rb	/^def dis_arbord(dis_string)$/;"	f
+dis_province	wrapper_dis_line.rb	/^def dis_province(dis_string)$/;"	f
+initialize	replace_angiosperm_family.rb	/^  def initialize(path, &block)$/;"	f	class:WordXmlManipulate
+initialize	replace_conifer_family.rb	/^  def initialize(path, &block)$/;"	f	class:WordXmlManipulate
+initialize	replace_docx_content.rb	/^  def initialize(path, &block)$/;"	f	class:WordXmlManipulate
+initialize	replace_fern_family.rb	/^  def initialize(path, &block)$/;"	f	class:WordXmlManipulate
+initialize	replace_moss_family.rb	/^  def initialize(path, &block)$/;"	f	class:WordXmlManipulate
+merge	replace_angiosperm_family.rb	/^  def merge(rec)$/;"	f	class:WordXmlManipulate
+merge	replace_conifer_family.rb	/^  def merge(rec)$/;"	f	class:WordXmlManipulate
+merge	replace_docx_content.rb	/^  def merge(rec)$/;"	f	class:WordXmlManipulate
+merge	replace_fern_family.rb	/^  def merge(rec)$/;"	f	class:WordXmlManipulate
+merge	replace_moss_family.rb	/^  def merge(rec)$/;"	f	class:WordXmlManipulate
+need_sort	wrapper_dis_line.rb	/^def need_sort(s)$/;"	f
+open	replace_angiosperm_family.rb	/^  def self.open(path, &block)$/;"	F	class:WordXmlManipulate
+open	replace_conifer_family.rb	/^  def self.open(path, &block)$/;"	F	class:WordXmlManipulate
+open	replace_docx_content.rb	/^  def self.open(path, &block)$/;"	F	class:WordXmlManipulate
+open	replace_fern_family.rb	/^  def self.open(path, &block)$/;"	F	class:WordXmlManipulate
+open	replace_moss_family.rb	/^  def self.open(path, &block)$/;"	F	class:WordXmlManipulate
+save	replace_angiosperm_family.rb	/^  def save(path)$/;"	f
+save	replace_conifer_family.rb	/^  def save(path)$/;"	f
+save	replace_docx_content.rb	/^  def save(path)$/;"	f
+save	replace_fern_family.rb	/^  def save(path)$/;"	f
+save	replace_moss_family.rb	/^  def save(path)$/;"	f
+sort_province	wrapper_dis_line.rb	/^def sort_province(array)$/;"	f
