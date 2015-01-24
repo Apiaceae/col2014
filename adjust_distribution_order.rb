@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
-# still have problem to deal with distribution include '()' or double ';' exist
+
 
 require 'nokogiri'
 require 'open-uri'
