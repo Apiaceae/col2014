@@ -4,7 +4,7 @@ require_relative "wrapper_dis_line.rb"
 
 
 
-file = File.read('//Users/Dragon/Desktop/checklist/angiosperm.html')
+file = File.read('//Users/Lisong/dev/col2014/example_moss.html')
 doc = Nokogiri::HTML(file)
 seperator = "<br\>"
 line_arr = doc.to_s.split(seperator)
@@ -77,5 +77,5 @@ dis_line = ''
 # puts "#{result}"
 docx = Nokogiri::HTML(doc).to_html
  # puts docx
-File.write("angiosperm-modified.html", docx)
+File.write("1.html", docx)
 

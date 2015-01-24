@@ -1,4 +1,6 @@
-#encoding: utf-8
+#!/usr/bin/env ruby
+# encoding: utf-8
+# still have problem to deal with distribution include '()' or double ';' exist
 
 require 'nokogiri'
 require 'open-uri'
@@ -18,80 +20,60 @@ puts "please provide your output file name:", prompt
 to_file = $stdin.gets.chomp
 
 
+# count how many distribution row need change
+rows_need_change = 0
+distribution = ''
 
+# read data into nokogir object by html file input
+# example_conifer.html
+content = Nokogiri::HTML(File.read(from_file))
 
-# read data into nokogir object
-doc = Nokogiri::HTML(File.read(from_file))
-
-seperator = "<br\>"
 
 # read file content each line to array
-line_arr = doc.to_s.split(seperator)
+arrays = content.to_s.split("<br\>")
 
-line_count = 0
-sort_count = 0
-modified_count = 0
-line_prefix = "分布:"
-dis_line = ''
-# replace_string = ''
-#result = ''
-
-for line_string in line_arr
-  line_text = line_string.to_s
-  if line_text.include? line_prefix
-    dis_line = line_text
-    line_text = line_text.gsub(/^分布:/, '').gsub(/\s+/, '')
-
-    if !line_text.include? ';' and !line_text.include? ','
-      corrected_dis = dis_line
+arrays.each do |row|
+  if row.include? '分布:'
+    original_distribution = row.to_s
+    row = row.to_s.gsub(/^分布:/, '').gsub(/\s+/, '')
+    
+    #sort with china and abroad distribution
+    if row.include? ';' and row.include? ','
+      distribution = '分布:' + sort_province(array_province(row))+"; "+dis_arbord(row).to_s
     end
-
-    if line_text.include? ';' and line_text.include? ','
-      corrected_dis = line_prefix + sort_province(array_province(line_text))+"; "+dis_arbord(line_text.gsub(/^分布:/, '')).to_s
-    end
-
-    if !line_text.include? ';' and line_text.include? ','
-      if line_text.include? '原产' or line_text.include? '归化'
-        corrected_dis = line_prefix+line_text
+  
+    # sort for only china distribution
+    if !row.include? ';' and row.include? ','
+      if row.include? '原产' or row.include? '归化'
+        distribution = '分布:' + row
       else
-        corrected_dis = line_prefix + sort_province(array_province(line_text))
+        distribution = '分布:' + sort_province(array_province(row))
       end
     end
-
-    if line_text.include? ';' and !line_text.include? ','
-      corrected_dis = line_prefix + sort_province(array_province(line_text))+"; "+dis_arbord(line_text.gsub(/^分布:/, '')).to_s
+  
+    # sort for only one china distribution with abroad distribution
+    if row.include? ';' and !row.include? ','
+      distribution = '分布:' + sort_province(array_province(row))+"; "+dis_arbord(row).to_s
     end
-
-    if line_text.gsub(/^分布:/, '').gsub(/\s+/, '') != corrected_dis.gsub(/^分布:/, '').gsub(/\s+/, '')
-      modified_count = modified_count + 1
-      # origin_dis = "分布:" + line_text.gsub(/;/, '; ')+" "
-      origin_dis = "分布:" + line_text
-      modified_dis = corrected_dis
-      # replace_string = replace_string + "'" + origin_dis + "'" + " => " + "'" + modified_dis + "'" + ", "
-      # org = "分布:" + line_text
-      mod = modified_dis
-      doc = doc.to_s.gsub(/#{dis_line}/, mod)
-      # puts Nokogiri::HTML(doc).to_html
+  
+    # only one distribution record don't need sort
+    if !row.include? ';' and !row.include? ','
+      distribution = '分布:' + row
     end
-
-    if need_sort(line_text)
-      sort_count = sort_count + 1
-      # puts line_count, line_text, corrected_dis
+    
+    # check if modified distribution sting is equal to original one
+    if row.gsub(/\s+/, '') != distribution.gsub(/^分布:/, '').gsub(/\s+/, '')
+      rows_need_change += 1
+      row = '分布:' + row
+      content = content.to_s.gsub(/#{original_distribution}/, distribution)
     end
-    line_count = line_count + 1
-    # puts "原始分布: #{origin_dis}"
-    # puts "更正分布: #{modified_dis}"
-    # ori = "/" + origin_dis + "/"
   end
 end
 
-# result = replace_string.chomp(', ')
-# end
+puts "#{rows_need_change} records with modified distribution!"
 
-# puts "You have total #{line_count} row"
-# puts "#{sort_count} records need sorted province order!"
-puts "#{modified_count} records with modified distribution!"
 # puts "#{result}"
-docx = Nokogiri::HTML(doc).to_html
+modified_content = Nokogiri::HTML(content).to_html
+
 # puts docx
-File.write(to_file, docx)
+File.write(to_file, modified_content)
