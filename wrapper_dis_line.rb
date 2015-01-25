@@ -12,7 +12,7 @@ end
 def dis_arbord(dis_string)
   if dis_string.include? ';'
     pos_of_semicolon = dis_string.index(';')
-    return dis_string[0, pos_of_semicolon]
+    return dis_string[0, pos_of_semicolon].lstrip
   end
 end
 

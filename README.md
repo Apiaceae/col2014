@@ -7,11 +7,12 @@ The basic step to running the script is:
 2. use pandoc to convert xxx.html to docx file, with the following command;
 ```
 pandoc -f html 1.html -t docx -o 2.docx
+pandoc -f html 1.html -t docx -o 1.docx
 ```
 3. run *replace_xxx_family.rb* file to replace family information.
 
 ####TODO
 still have problem to deal with distribution include '()' or double ';' exist
-example_moss.html file include some new line and enter character which resulted unexpected results_
+example_moss.html file include some new line and enter character which resulted unexpected results(manually remove this!!)
 
 
