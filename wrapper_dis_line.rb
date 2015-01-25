@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 def need_sort(s)
   sorted_province = sort_province(array_province(s))
   origin_province =  dis_province(s)

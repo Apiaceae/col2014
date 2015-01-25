@@ -36,12 +36,12 @@ arrays.each do |row|
   if row.include? '分布:'
     original_distribution = row.to_s
     row = row.to_s.gsub(/^分布:/, '').gsub(/\s+/, '')
-    
+
     #sort with china and abroad distribution
     if row.include? ';' and row.include? ','
       distribution = '分布:' + sort_province(array_province(row))+"; "+dis_arbord(row).to_s
     end
-  
+
     # sort for only china distribution
     if !row.include? ';' and row.include? ','
       if row.include? '原产' or row.include? '归化'
@@ -50,17 +50,17 @@ arrays.each do |row|
         distribution = '分布:' + sort_province(array_province(row))
       end
     end
-  
+
     # sort for only one china distribution with abroad distribution
     if row.include? ';' and !row.include? ','
       distribution = '分布:' + sort_province(array_province(row))+"; "+dis_arbord(row).to_s
     end
-  
+
     # only one distribution record don't need sort
     if !row.include? ';' and !row.include? ','
       distribution = '分布:' + row
     end
-    
+
     # check if modified distribution sting is equal to original one
     if row.gsub(/\s+/, '') != distribution.gsub(/^分布:/, '').gsub(/\s+/, '')
       rows_need_change += 1

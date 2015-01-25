@@ -1,10 +1,11 @@
+# encoding: utf-8
 require 'nokogiri'
 require 'open-uri'
 require_relative "wrapper_dis_line.rb"
 
 
 
-file = File.read('//Users/Lisong/dev/col2014/example_moss.html')
+file = File.read('//Users/Lisong/dev/col2014/conifer.htm')
 doc = Nokogiri::HTML(file)
 seperator = "<br\>"
 line_arr = doc.to_s.split(seperator)
@@ -77,5 +78,5 @@ dis_line = ''
 # puts "#{result}"
 docx = Nokogiri::HTML(doc).to_html
  # puts docx
-File.write("1.html", docx)
+File.write("conifer_01.html", docx)
 

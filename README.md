@@ -14,5 +14,5 @@ pandoc -f html 1.html -t docx -o 1.docx
 ####TODO
 still have problem to deal with distribution include '()' or double ';' exist
 example_moss.html file include some new line and enter character which resulted unexpected results(manually remove this!!)
-
+if some distribution like this, 分布:越南(?); 云南will result gsub function error message
 
