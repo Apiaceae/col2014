@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
 require 'rubygems'
 require 'zip/zip' # rubyzip gem
@@ -56,12 +57,12 @@ end
 
 if __FILE__ == $0
   file = ARGV[0]
-  working_file = ARGV[1] || file.sub(/\.docx/, '-merged.docx')
+  working_file = ARGV[1] || file.sub(/\.docx/, '-replaced.docx')
   w = WordXmlManipulate.open(file)
-  w.merge('ASPLENIACEAE' => '铁角蕨科 Aspleniaceae Newman', 
+  w.merge('ASPLENIACEAE' => '铁角蕨科 Aspleniaceae Newman',
   'ATHYRIACEAE' => '蹄盖蕨科 Athyriaceae Alston',
   'BLECHNACEAE' => '乌毛蕨科 Blechnaceae Newman',
-  'CIBOTIACEAE' => '金毛狗蕨科 Cibotiaceae Korall', 
+  'CIBOTIACEAE' => '金毛狗蕨科 Cibotiaceae Korall',
   'CYATHEACEAE' => '桫椤科 Cyatheaceae Kaulf.',
   'CYSTOPTERIDACEAE' => '冷蕨科 Cystopteridaceae Schmakov',
   'DAVALLIACEAE' => '骨碎补科 Davalliaceae M. R. Schomb.',
@@ -80,23 +81,23 @@ if __FILE__ == $0
   'LYGODIACEAE' => '海金沙科 Lygodiaceae M. Roem.',
   'MARATTIACEAE' => '合囊蕨科 Marattiaceae Kaulf.',
   'MARSILEACEAE' => '蘋科 Marsileaceae Mirb.',
-  'NEPHROLEPIDACEAE' => '肾蕨科 Nephrolepidaceae Pic. Serm.', 
+  'NEPHROLEPIDACEAE' => '肾蕨科 Nephrolepidaceae Pic. Serm.',
   'OLEANDRACEAE' => '条蕨科 Oleandraceae Ching ex Pic. Serm.',
-  'ONOCLEACEAE'  => '球子蕨科 Onocleaceae Pic. Serm.', 
-  'OPHIOGLOSSACEAE' => '瓶尔小草科 Ophioglossaceae Martinov', 
+  'ONOCLEACEAE'  => '球子蕨科 Onocleaceae Pic. Serm.',
+  'OPHIOGLOSSACEAE' => '瓶尔小草科 Ophioglossaceae Martinov',
   'OSMUNDACEAE' => '紫萁科 Osmundaceae Martinov',
-  'PLAGIOGYRIACEAE' => '瘤足蕨科 Plagiogyriaceae Bower', 
+  'PLAGIOGYRIACEAE' => '瘤足蕨科 Plagiogyriaceae Bower',
   'POLYPODIACEAE' => '水龙骨科 Polypodiaceae J. Presl & C. Presl',
   'PSILOTACEAE' => '松叶蕨科 Psilotaceae J. W. Griff. & Henfr.',
-  'PTERIDACEAE' => '凤尾蕨科 Pteridaceae E. D. M. Kirchn.', 
-  'RHACHIDOSORACEAE' => '轴果蕨科 Rhachidosoraceae X. C. Zhang', 
-  'SALVINIACEAE' => '槐叶苹科 Salviniaceae Martinov', 
-  'SCHIZAEACEAE' => '莎草蕨科 Schizaeaceae Kaulf.', 
+  'PTERIDACEAE' => '凤尾蕨科 Pteridaceae E. D. M. Kirchn.',
+  'RHACHIDOSORACEAE' => '轴果蕨科 Rhachidosoraceae X. C. Zhang',
+  'SALVINIACEAE' => '槐叶苹科 Salviniaceae Martinov',
+  'SCHIZAEACEAE' => '莎草蕨科 Schizaeaceae Kaulf.',
   'SELAGINELLACEAE' => '卷柏科 Selaginellaceae Willk.',
   'TECTARIACEAE' => '三叉蕨科 Tectariaceae Panigrahi',
   'THELYPTERIDACEAE' => '金星蕨科 Thelypteridaceae Pic. Serm.',
   'WOODSIACEAE' => '岩蕨科 Woodsiaceae Herter'
-)  
+)
   w.save(working_file)
   puts"DEBUG: complete"
 end

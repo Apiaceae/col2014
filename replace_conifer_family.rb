@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
+
 
 require 'rubygems'
 require 'zip/zip' # rubyzip gem
@@ -56,21 +58,21 @@ end
 
 if __FILE__ == $0
   file = ARGV[0]
-  working_file = ARGV[1] || file.sub(/\.docx/, '-merged.docx')
+  working_file = ARGV[1] || file.sub(/\.docx/, '-replaced.docx')
   w = WordXmlManipulate.open(file)
-  w.merge('ARAUCARIACEAE' => '南洋杉科 Araucariaceae Henkel et W. Hochst.', 
+  w.merge('ARAUCARIACEAE' => '南洋杉科 Araucariaceae Henkel et W. Hochst.',
     'CEPHALOTAXACEAE' => '三尖杉科 Cephalotaxaceae Neger',
     'CUPRESSACEAE' =>  '柏科 Cupressaceae Gray',
-    'CYCADACEAE' => '苏铁科 Cycadaceae Pers.', 
+    'CYCADACEAE' => '苏铁科 Cycadaceae Pers.',
     'EPHEDRACEAE' => '麻黄科 Ephedraceae Dumort.',
-    'GINKGOACEAE' =>  '银杏科 Ginkgoaceae Engl.', 
+    'GINKGOACEAE' =>  '银杏科 Ginkgoaceae Engl.',
     'GNETACEAE' => '买麻藤科 Gnetaceae Blume',
     'PINACEAE' => '松科 Pinaceae Adans.',
     'PODOCARPACEAE' => '罗汉松科 Podocarpaceae Endl.',
     'SCIADOPITYACEAE' => '金松科 Sciadopityaceae Luerss.',
     'TAXACEAE' => '红豆杉科 Taxaceae Bercht. & J. Presl',
     'TAXODIACEAE' => '杉科 Taxodiaceae Saporta'
-)  
+)
   w.save(working_file)
   puts"DEBUG: complete"
 end

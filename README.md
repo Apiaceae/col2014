@@ -1,6 +1,6 @@
 #### The script function to treat ordered distribution information
 ### for col 2015 checklist data
-
+### best run on ruby 1.9.3-p547 with nokogiri 1.6.6.2
 The basic step to running the script is:
 
 1. please input you example_moss.html file to run *adjust_distribution_order.rb* to produce file with modified distribution;
